@@ -3,7 +3,7 @@ package br.com.candalo.joker;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class JokeActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
