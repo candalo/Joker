@@ -10,10 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import br.com.candalo.jokeview.JokeActivity;
 
-public class MainFragment extends Fragment {
+public class MainFragment extends Fragment implements EndpointsAsyncTask.OnResultListener {
 
     @Nullable
     @Override
@@ -24,11 +25,17 @@ public class MainFragment extends Fragment {
         tellJokeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), JokeActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(getContext(), JokeActivity.class);
+//                startActivity(intent);
+                new EndpointsAsyncTask(MainFragment.this).execute();
             }
         });
 
         return view;
+    }
+
+    @Override
+    public void onResult(String joke) {
+        Toast.makeText(getContext(), joke, Toast.LENGTH_SHORT).show();
     }
 }
