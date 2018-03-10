@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">jokeview</string>
+    <string name="joke_error">I am in a bad mood :(</string>
+    <string name="toolbar_title">Joke</string>
 </resources>

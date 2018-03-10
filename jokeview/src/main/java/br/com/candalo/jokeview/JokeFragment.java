@@ -10,8 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import br.com.candalo.jokesupplier.JokeSupplier;
-
 public class JokeFragment extends Fragment {
 
     @Nullable
@@ -20,11 +18,18 @@ public class JokeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_joke, container, false);
 
         TextView jokeTextView = view.findViewById(R.id.tv_joke);
-        jokeTextView.setText(JokeSupplier.tellAJoke());
+        jokeTextView.setText(getJoke());
 
         setupStyle(view, jokeTextView);
 
         return view;
+    }
+
+    private String getJoke() {
+        if (getActivity() != null) {
+            return getActivity().getIntent().getStringExtra("jokeExtra");
+        }
+        return getString(R.string.joke_error);
     }
 
     private void setupStyle(View view, TextView jokeTextView) {
